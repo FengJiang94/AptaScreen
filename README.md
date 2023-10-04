@@ -70,7 +70,7 @@ AptaScreen.sh --help
 
 Manual page:
 
-![](images/Usages1.png)
+![](images/Usage1.png)
 
 ## Examples
 
