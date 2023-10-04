@@ -131,5 +131,6 @@ Outputs/
     ├── reads_number_report.csv # reporting the depth of each library  
     ├── integrated_result.top100000.csv # A summerized table containing the top 100000 enriched Aptamer sequences (unconserved region only) in R2 and theirs counts in R0, R1, and R2.
     ├── R.log # R console
-# Usually, **integrated_result.top100000.csv** is the most useful output data.
 ```
+
+# Usually, **integrated_result.top100000.csv** is the most useful output data.
