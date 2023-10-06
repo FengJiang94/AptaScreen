@@ -248,7 +248,7 @@ do
 # unzip the fastq
   gunzip -c $i.trim.processed.combined.fastq.gz > $i.trim.processed.combined.fastq
 # use Fastaptamer count 
-  perl /scratch/fjiang7/software/FASTAptamer_v1.0.3/fastaptamer_count -i $i.trim.processed.combined.fastq -o $i.trim.processed.combined.count.fasta
+  perl ${HomeDir}/software/FASTAptamer_v1.0.3/fastaptamer_count -i $i.trim.processed.combined.fastq -o $i.trim.processed.combined.count.fasta
   echo ""
 done
 
