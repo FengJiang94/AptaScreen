@@ -1,4 +1,4 @@
-# AptamerScreen
+# AptaScreen
 A script to screen Aptamer sequences enriched in library following SELEX (Systematic Evolution of Ligands by EXponential Enrichment)
 
 If you use this pipeline, please consider citing it:
