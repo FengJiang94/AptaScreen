@@ -46,7 +46,12 @@ export PATH=$PATH:/Where AptaScreen is/AptaScreen
 chmod +x /Where AptaScreen is/AptaScreen/AptaScreen.sh
 ```
 
-4, cutadapt and dplyr
+4, set R library path (optional)
+```
+export R_LIBS_SITE="My R libray path"
+```
+
+5, cutadapt and dplyr
 
 Occasionally cutadapt and dplyr are not compatible so that we unload cutadapt before loading dplyr in line 292 of **AptaScreen.sh**
 ```
