@@ -59,7 +59,7 @@ If you are not encountering this problem or not loading cutadapt as Environment 
 This pipeline can only be sued for unstranded single-end sequencing.                
  
 This function requires the sequenced library to be as follows:                           
-    **adapter(conserved region)-NNNNNNNNNNNNNNNNNNN-adapter(conserved regiion**
+    **adapter(conserved region)-NNNNNNNNNNNNNNNNNNN-adapter(conserved regiion)**
  
 For the manual page:
 
