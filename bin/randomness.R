@@ -54,6 +54,9 @@ colnames(df) <- c("duplicate_level", Args[2:length(Args)])
 write.csv(df, "Randomness.csv", row.names = F)
 
 # Plot the duplicate level to show the randomness of each sample
+df <- read.table("Randomness.csv", header = T, sep = ",")
+
+library(reshape2)
 dt <- melt(df)
 pdf(file = "Randomness.pdf", height = 8, width = 12)
 ggplot(dt, aes(x=duplicate_level, y=value, group = variable, color = variable)) +
@@ -70,7 +73,6 @@ ggplot(dt, aes(x=duplicate_level, y=value, group = variable, color = variable)) 
 dev.off()
 
 ## barplot of sample duplicated level
-df <- read.table("Randomness.csv", header = T, sep = ",")
 nums <- ncol(df)
 df1 <- colSums(df[1,c(2:nums)])
 df10 <- colSums(df[c(2:9),c(2:nums)])
@@ -89,7 +91,10 @@ for (i in c(1:ncol(df)))
 }
 df$duplicated_level <- c("unique", "2-9", "10-100", "100-1000", ">1000")
 write.csv(df, "Randomness_barplot.csv", row.names = F)
+
 # plot
+df <- read.table("Randomness_barplot.csv", header = T, sep = ",")
+
 pdf(file = "Randomness_barplot.pdf", height = 12, width = 12)
 m <- melt(df)
 ggplot(m, aes(x=variable, y=value, group = duplicated_level, fill = duplicated_level)) +

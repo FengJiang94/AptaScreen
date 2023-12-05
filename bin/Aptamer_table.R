@@ -16,16 +16,16 @@ paste("process", Args[2], sep = " ")
 paste("set name to", Args[3], sep = " ")
 
 # report number of workers available for R
-library(parallel) # for using parallel::mclapply() and checking #totalCores on compute nodes / workstation: detectCores()
-library(future) # for checking #availble cores / workers on compute nodes / workstation: availableWorkers() / availableCores() 
-workers <- availableWorkers()
-cat(sprintf("#workders/#availableCores/#totalCores: %d/%d/%d, workers:\n", length(workers), availableCores(), detectCores()))
-print( workers )
+#library(parallel) # for using parallel::mclapply() and checking #totalCores on compute nodes / workstation: detectCores()
+#library(future) # for checking #availble cores / workers on compute nodes / workstation: availableWorkers() / availableCores()
+#workers <- availableWorkers()
+#cat(sprintf("#workders/#availableCores/#totalCores: %d/%d/%d, workers:\n", length(workers), availableCores(), detectCores()))
+#print( workers )
 
 # report ram usage for R
-library(unix)
-ram <- rlimit_as()
-print(ram)
+#library(unix)
+#ram <- rlimit_as()
+#print(ram)
 
 
 
