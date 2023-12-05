@@ -105,10 +105,12 @@ do
     elif [[ $var == "-g1" ]]
     then
         AdapterF=( ^${array[$counter+1]} )
+        AdapterR3=$( echo ${array[$counter+1]} | tr ACGTacgt TGCAtgca | rev )
 #if the variable is -g2, set the 5' adapter/conserved sequence if reverse strand is sequenced
     elif [[ $var == "-g2" ]]
     then
         AdapterR=( ^${array[$counter+1]} )
+        AdapterF3=$( echo ${array[$counter+1]} | tr ACGTacgt TGCAtgca | rev )
 #if the variable is -l, set up the length of diverse region (Ns)
     elif [[ $var == "-l" || $var == "--length" ]]
     then
@@ -218,14 +220,22 @@ for i in ${Input[@]}
 do
   echo "***** process ${i}........"
 # trim the reads when forward strand is sequenced
-  echo "cutadapt -f fastq -j 15 --max-n 0 --times 1 -e 0.1 -O 1 --quality-cutoff 5 -m 15 -g $AdapterF --length $Length --trimmed-only -o $i.R1.trim.fastq.gz $i > $i.trim.cutadpt.log"
+  echo "cutadapt -f fastq -j 15 --max-n 0 --times 1 -e 0.1 -O 1 --quality-cutoff 5 -g $AdapterF -m $Length --trimmed-only -o $i.R1.T1.trim.fastq.gz $i > $i.trim.cutadpt.log"
 
-  cutadapt -f fastq -j 15 --max-n 0 --times 1 -e 0.1 -O 1 --quality-cutoff 5 -m 15 -g $AdapterF --length $Length --trimmed-only -o $i.R1.trim.fastq.gz $i > $i.trim.cutadpt.log
+  cutadapt -f fastq -j 15 --max-n 0 --times 1 -e 0.1 -O 1 --quality-cutoff 5 -g $AdapterF -m $Length --trimmed-only -o $i.R1.T1.trim.fastq.gz $i > $i.trim.cutadpt.log
+  
+  echo "cutadapt -f fastq -j 15 --max-n 0 --times 1 -e 0.1 -O 1 --quality-cutoff 5 -a ${AdapterF3}X -m $Length --trimmed-only -o $i.R1.trim.fastq.gz $i.R1.T1.trim.fastq.gz >> $i.trim.cutadpt.log"
+  
+  cutadapt -f fastq -j 15 --max-n 0 --times 1 -e 0.1 -O 1 --quality-cutoff 5 -a ${AdapterF3}X -m $Length --trimmed-only -o $i.R1.trim.fastq.gz $i.R1.T1.trim.fastq.gz >> $i.trim.cutadpt.log
 
 # trim the reads when reverse strand is sequenced
-  echo "cutadapt -f fastq -j 15 --max-n 0 --times 1 -e 0.1 -O 1 --quality-cutoff 5 -m 15 -g $AdapterR --length $Length --trimmed-only -o $i.R2.trim.fastq.gz $i >> $i.trim.cutadpt.log"
+  echo "cutadapt -f fastq -j 15 --max-n 0 --times 1 -e 0.1 -O 1 --quality-cutoff 5 -g $AdapterR -m $Length --trimmed-only -o $i.R2.T1.trim.fastq.gz $i >> $i.trim.cutadpt.log"
 
-  cutadapt -f fastq -j 15 --max-n 0 --times 1 -e 0.1 -O 1 --quality-cutoff 5 -m 15 -g $AdapterR --length $Length --trimmed-only -o $i.R2.trim.fastq.gz $i >> $i.trim.cutadpt.log
+  cutadapt -f fastq -j 15 --max-n 0 --times 1 -e 0.1 -O 1 --quality-cutoff 5 -g $AdapterR -m $Length --trimmed-only -o $i.R2.T1.trim.fastq.gz $i >> $i.trim.cutadpt.log
+  
+  echo "cutadapt -f fastq -j 15 --max-n 0 --times 1 -e 0.1 -O 1 --quality-cutoff 5 -a ${AdapterR3}X -m $Length --trimmed-only -o $i.R2.trim.fastq.gz $i.R2.T1.trim.fastq.gz >> $i.trim.cutadpt.log"
+  
+  cutadapt -f fastq -j 15 --max-n 0 --times 1 -e 0.1 -O 1 --quality-cutoff 5 -a ${AdapterR3}X -m $Length --trimmed-only -o $i.R2.trim.fastq.gz $i.R2.T1.trim.fastq.gz >> $i.trim.cutadpt.log
 
 # reverse compliment the reads when reverse strand is sequenced 
   #echo "reverse compliment the reads when reverse strand is sequenced"
@@ -238,6 +248,8 @@ do
   rm $i.R2.trim.fastq
   rm $i.R2.trim.rev.fastq.gz
   rm $i.R1.trim.fastq.gz
+  rm $i.R1.T1.trim.fastq.gz
+  rm $i.R2.T1.trim.fastq.gz
 done
 
 echo "***** use FASTaptamer to count sequences........"
