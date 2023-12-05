@@ -75,7 +75,7 @@ Manual page:
 ## Examples
 
 A regular run for three screening library round #0 (R0), round #1 (R1), and round #2 (R2) containing the following reads:
-     **adapter(conserved region)- NNNNNNNNN (40 N) NNNNNNNNNN -adapter(conserved regiion**
+     **adapter(conserved region)- NNNNNNNNN (40 N) NNNNNNNNNN -adapter(conserved regiion)**
 
 ```
 # Raw single-end sequencing data hierarchy
