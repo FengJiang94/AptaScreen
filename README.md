@@ -5,6 +5,8 @@ If you use this pipeline, please consider citing it:
 
 1. Jiang, F., Hedaya, O.M., Khor, E., Wu, J., Auguste, M., & Yao, P. (2023). [RNA binding protein PRRC2B mediates translation of specific mRNAs and regulates cell cycle progression](https://academic.oup.com/nar/article/51/11/5831/7147500). _Nucleic Acids Research_, 51(11), 5831–5846
 
+2. Khalid K. Alam, Jonathan L. Chang & Donald H. Burke. [FASTAptamer: A Bioinformatic Toolkit for High-Throughput Sequence Analysis of Combinatorial Selections] Molecular Therapy — Nucleic Acids. 2015. 4, e230; DOI: 10.1038/mtna.2015.4
+
 ## Software prerequisites
 This pipeline is designed to run on Linux servers, and requires the following software:
 
