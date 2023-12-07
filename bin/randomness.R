@@ -58,8 +58,10 @@ df <- read.table("Randomness.csv", header = T, sep = ",")
 
 library(reshape2)
 dt <- melt(df)
+dt$duplicate_level <- factor(dt$duplicate_level, levels = c(1,2,3,4,5,6,7,8,9,"10-50", "50-100", "100-500", "500-1K",
+                                                            "1-5K", "5-10K", ">10K"))
 pdf(file = "Randomness.pdf", height = 8, width = 12)
-ggplot(dt, aes(x=duplicate_level, y=value, group = variable, color = variable)) +
+ggplot(dt, aes(x=as.factor(duplicate_level), y=value, group = variable, color = variable)) +
   geom_line() +
   theme_bw() +
   ylab(" % of total reads") +
@@ -97,6 +99,8 @@ df <- read.table("Randomness_barplot.csv", header = T, sep = ",")
 
 pdf(file = "Randomness_barplot.pdf", height = 12, width = 12)
 m <- melt(df)
+m$duplicated_level <- factor(m$duplicated_level, levels =
+                               c(">1000","100-1000","10-100", "2-9", "unique"))
 ggplot(m, aes(x=variable, y=value, group = duplicated_level, fill = duplicated_level)) +
   geom_bar(stat="identity") +
   theme_bw() +
