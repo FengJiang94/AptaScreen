@@ -39,6 +39,7 @@ git clone https://github.com/fengjiang94/AptaScreen.git
 2. add AptaScreen to $path
 ```
 export PATH=$PATH:/Where AptaScreen is/AptaScreen
+export PATH=$PATH:/Where AptaScreen is/AptaScreen/bin
 ```
 
 3, Add executable permissions
