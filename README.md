@@ -24,6 +24,7 @@ dplyr
 data.table
 ggplot2
 tidyr
+reshape2
 ```
 
 ## Pipeline setup
