@@ -45,6 +45,7 @@ export PATH=$PATH:/Where AptaScreen is/AptaScreen/bin
 3, Add executable permissions
 ```
 chmod +x /Where AptaScreen is/AptaScreen/AptaScreen.sh
+chmod +x /Where AptaScreen is/AptaScreen/bin/*
 ```
 
 4, set R library path (optional)
