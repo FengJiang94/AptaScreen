@@ -55,6 +55,12 @@ if (Args[5] == "left"){
 # save the merged data
 write.csv(M, Args[6], row.names = F)
 
+# fillter out shorter and longer aptamers
+data <- read.csv(Args[6], header = T, row.names = 1)
+data <- data[nchar(rownames(data)) == 40,]
+write.csv(data, Args[6])
+
+
 
 
 
