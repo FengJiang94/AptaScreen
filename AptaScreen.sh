@@ -308,7 +308,7 @@ echo "***** generate the integrated table........"
 echo "***** generate the integrated table........" >>R.log
 if [[ ${#Name[@]} > 1 ]]
     then
-        less ${Name[-1]}.csv |head -n $num >tmp.csv
+        cp ${Name[-1]}.top$keep.csv >tmp.csv
         for (( i=${#Name[@]}-1; i>=0; i-- ))
         do 
           rev[${#rev[@]}]=${Name[i]}
