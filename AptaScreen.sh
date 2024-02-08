@@ -295,7 +295,16 @@ for i in ${Name[@]}
 do
   ((n=n%P)); ((n++==0)) && wait
   echo "filter ${i}........"
-  awk -F "," '{ if(NR == 1) { print } else if(length($1) == 40) { print }}' $i.csv | head -n $num > $i.top$keep.csv &
+  awk -F "," '{ if(NR == 1) { print } else if(length($1) == 40) { print }}' $i.csv > $i.filtered.csv &
+done
+
+wait
+
+for i in ${Name[@]}
+do
+  ((n=n%P)); ((n++==0)) && wait
+  echo "filter ${i}........"
+  less $i.filtered.csv | head -n $num > $i.top$keep.csv &
 done
 
 wait
