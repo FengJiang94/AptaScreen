@@ -350,9 +350,9 @@ for i in ${Name[@]}
 do
   ((n=n%P)); ((n++==0)) && wait
   echo "generate randomness report for $i........"
-  linux_call_R.sh ${HomeDir}/bin/sample_randomness.R $WD $i.csv 1>>R.log 2>>R.log &
+  linux_call_R.sh ${HomeDir}/bin/sample_randomness.R $WD $i.filtered.csv 1>>R.log 2>>R.log &
   echo "generate ATGC distribution report for $i........"
-  linux_call_R.sh ${HomeDir}/bin/sample_ATGC_distribution.R $WD $i.csv $Length 1>>R.log 2>>R.log &
+  linux_call_R.sh ${HomeDir}/bin/sample_ATGC_distribution.R $WD $i.filtered.csv $Length 1>>R.log 2>>R.log &
 done
 
 wait
@@ -360,11 +360,10 @@ wait
 # count number of reads for each sample
 echo "generate report for number of reads in each sample........"
 echo "" > reads_number_report.csv
-for i in ${!Input[@]}
+for i in ${Name[@]}
 do
-  Lnum=$(less ${Input[i]}.trim.processed.combined.fastq | wc -l)
-  Rnum=$(echo "$Lnum/4" | bc)
-  echo "${Name[i]},$Rnum" >> reads_number_report.csv
+  Rnum=$(awk -F "," '{if(NR > 1) {Total=Total+$2}} END {print Total}' $i.filtered.csv)
+  echo "$i,$Rnum" >> reads_number_report.csv
 done
 
 # we used duplicate level indicates the randomness of each sample.
