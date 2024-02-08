@@ -89,7 +89,7 @@ Readnum <- as.data.frame(Readnum)
 # percentage * #total reads = #reads
 for (i in c(1:ncol(df)))
 {
-  df[,i] <- df[,i]*Readnum[Readnum$V1 == colnames(df)[i],]$V2
+  df[,i] <- df[,i]*Readnum[i,]$V2
 }
 df$duplicated_level <- c("unique", "2-9", "10-100", "100-1000", ">1000")
 write.csv(df, "Randomness_barplot.csv", row.names = F)
