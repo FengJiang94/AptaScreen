@@ -125,14 +125,16 @@ Outputs/
     ├── R0.fastq.csv.randomness.csv  # reporting the duplicate level (randomness) of R0 
     ├── R0.fastq.csv.ATGCdistribution.csv  # reporting the ATGC distribution of R0 
     ├── R0.fastq.trim.cutadpt.log  # log for cutadpt
-    ├── R1.fastq.csv 
+    ├── R1.fastq.csv
+    ├── R1.fastq.filtered.csv
     ├── R1.fastq.trim.processed.combined.count.fasta  
     ├── R1.fastq.trim.processed.combined.fastq 
     ├── R1.fastq.top100000.csv  
     ├── R1.fastq.csv.randomness.csv  
     ├── R1.fastq.csv.ATGCdistribution.csv  
     ├── R1.fastq.trim.cutadpt.log
-    ├── R2.fastq.csv 
+    ├── R2.fastq.csv
+    ├── R2.fastq.filtered.csv
     ├── R2.fastq.trim.processed.combined.count.fasta  
     ├── R2.fastq.trim.processed.combined.fastq 
     ├── R2.fastq.top100000.csv  
