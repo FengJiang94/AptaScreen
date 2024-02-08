@@ -37,7 +37,7 @@ git clone --depth 1 --branch tag https://github.com/fengjiang94/AptaScreen.git
 replace "tag" with the branch you want. For example: 
 
 ```
-git clone --depth 1 --branch v1.2b https://github.com/fengjiang94/AptaScreen.git
+git clone --depth 1 --branch v1.3 https://github.com/fengjiang94/AptaScreen.git
 ```
 
 **AptaScreen.sh** is the main script to run.
